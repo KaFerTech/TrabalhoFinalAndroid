@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.esteticahsof.R
 import com.example.esteticahsof.databinding.ActivityClienteBinding
 import com.example.esteticahsof.model.Cliente
-import com.example.esteticahsof.view.adapter.ClienteAdapter
 import com.example.esteticahsof.viewmodel.ClienteViewModel
 
 class ClienteActivity : AppCompatActivity() {

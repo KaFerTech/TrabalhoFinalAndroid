@@ -8,8 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.esteticahsof.databinding.ActivityClientesBinding
 import com.example.esteticahsof.view.adapter.ClienteAdapter
-import com.example.esteticahsof.viewmodel.CadastroClienteViewModel
-import com.example.esteticahsof.viewmodel.CadastroClienteViewModelOld
 import com.example.esteticahsof.viewmodel.ClienteViewModel
 
 class ClientesActivity : AppCompatActivity() {
