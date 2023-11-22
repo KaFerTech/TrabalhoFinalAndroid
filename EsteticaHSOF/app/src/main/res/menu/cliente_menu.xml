@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuEditarCliente"
+        android:title="Editar"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_edit"
+        />
+
+    <item
+        android:id="@+id/menuFavoritarCliente"
+        android:title="Favorito"
+        app:showAsAction="ifRoom"
+        android:icon="@android:drawable/btn_star_big_off"
+        />
+
+    <item
+        android:id="@+id/deletarCliente"
+        android:title="Deletar"
+        app:showAsAction="collapseActionView"
+        android:icon="@android:drawable/ic_menu_delete"
+        />
+
+</menu>

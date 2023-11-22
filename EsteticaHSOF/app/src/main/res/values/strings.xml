@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">EsteticaHSOF</string>
+    <string-array name="gender_options">
+        <item>Feminino</item>
+        <item>Masculino</item>
+    </string-array>
+</resources>

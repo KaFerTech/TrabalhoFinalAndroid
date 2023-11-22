@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".view.ClientesActivity">
+
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewClientes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Pesquise clientes"
+        />
+
+    <Button
+        android:id="@+id/btnNovoCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Criar novo cliente"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvClientes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
+
+</LinearLayout>

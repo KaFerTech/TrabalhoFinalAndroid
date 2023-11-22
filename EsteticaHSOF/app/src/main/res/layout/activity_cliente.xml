@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".view.ClienteActivity" >
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@color/cardview_shadow_start_color"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        />
+
+
+    <EditText
+        android:id="@+id/edtNomeCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:layout_marginVertical="20dp"
+        android:enabled="false"
+        android:text="Nome Cliente" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageButton
+            android:id="@+id/btnLigar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_call"
+            />
+
+        <TextView
+            android:id="@+id/txtLigar"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginStart="50dp"
+            android:gravity="center"
+            android:text="Ligar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnLigar" />
+
+        <ImageButton
+            android:id="@+id/btnAgendar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+        <TextView
+            android:id="@+id/txtAgendar"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="center"
+            android:text="Agendar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAgendar" />
+
+        <ImageButton
+            android:id="@+id/btnTexto"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnAgendar"
+            app:layout_constraintStart_toEndOf="@+id/btnLigar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/stat_notify_chat" />
+
+        <TextView
+            android:id="@+id/txtTexto"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="40dp"
+            android:gravity="center"
+            android:text="Texto"
+            app:layout_constraintEnd_toStartOf="@+id/txtAgendar"
+            app:layout_constraintStart_toEndOf="@+id/txtLigar"
+            app:layout_constraintTop_toBottomOf="@+id/btnTexto" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginVertical="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#D8D8D8"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Dados do Cliente" />
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:hint="Telefone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTelefone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="(00) 0 0000-0000"
+                    android:enabled="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:enabled="false"
+                android:hint="E-mail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="email@mail.com"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:enabled="false"
+                android:hint="CPF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="000.000.000-00"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:hint="Data de Nascimento">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtDtNascimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:enabled="false"
+                    android:text="00/00/0000"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Gênero"
+
+                    android:textSize="18sp"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    android:layout_marginVertical="7dp"
+                    android:hint="Gênero"
+                    >
+
+                    <Spinner
+                        android:id="@+id/spinnerGenero"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:hint="Endereço">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEndereco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:lines="2"
+                    android:text="..."
+                    android:enabled="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:hint="Alergias">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAlergias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:lines="2"
+                    android:text="..."
+                    android:enabled="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:layout_marginVertical="5dp"
+                android:hint="Observações">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtObservacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:lines="2"
+                    android:text="..."
+                    android:enabled="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
