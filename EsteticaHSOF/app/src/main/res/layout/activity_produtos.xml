@@ -6,28 +6,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".view.ClientesActivity">
+    tools:context=".view.ProdutosActivity">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchViewClientes"
+        android:id="@+id/searchViewProdutos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Pesquise clientes"
+        android:hint="Pesquise Produtos"
         />
 
     <Button
-        android:id="@+id/btnNovoCliente"
+        android:id="@+id/btnNovoProduto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Criar novo cliente"
+        android:text="Criar novo produto"
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvClientes"
+        android:id="@+id/rcvProdutos"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
-
 
 </LinearLayout>

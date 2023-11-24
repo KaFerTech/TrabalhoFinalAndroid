@@ -5,16 +5,27 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Cliente
-import com.example.esteticahsof.model.ValidarCliente
+import com.example.esteticahsof.model.Produto
+import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.ClienteRepository
 
 class ClienteViewModel(application: Application): AndroidViewModel(application) {
 
     private var repository = ClienteRepository(application.applicationContext)
-    private var validacao = ValidarCliente()
+    private var validacao = ValidarClasses()
     private var clienteFromDB = MutableLiveData<Cliente>()
     private var txtToast = MutableLiveData<String>()
     private var listViewModel = MutableLiveData<List<Cliente>>()
+
+    fun deletar(cliente: Cliente){
+        repository.deletar(cliente)
+        txtToast.value = "Cliente excluído!"
+    }
+
+    fun deletar(id: Int){
+        repository.deletar(repository.getCliente(id))
+        txtToast.value = "Cliente excluído!"
+    }
 
     fun getListViewModel() : LiveData<List<Cliente>> {
         return listViewModel
@@ -37,7 +48,7 @@ class ClienteViewModel(application: Application): AndroidViewModel(application) 
     }
 
     fun validarAntesDeAtualizar(nomeCliente: String, telefone: String) : Boolean {
-        if (validacao.camposEmBranco(nomeCliente, telefone)) {
+        if (validacao.camposEmBrancoCliente(nomeCliente, telefone)) {
             txtToast.value = "Preencha Pelomenos Nome e CPF"
             return false
         }

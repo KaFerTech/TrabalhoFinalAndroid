@@ -36,25 +36,17 @@ class ClienteActivity : AppCompatActivity() {
             viewModel.findCliente(id)
         }
 
+
         val spinnerGenero = binding.spinnerGenero
-
-        // Carregar as opções de gênero do arquivo de recursos
         val genderOptions = resources.getStringArray(R.array.gender_options)
-
-        // Criar um ArrayAdapter usando as opções de gênero
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genderOptions)
-
-        // Definir o estilo do dropdown
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-
-        // Definir o adaptador no Spinner
         spinnerGenero.adapter = adapter
-
         spinnerGenero.isEnabled = false
         spinnerGenero.isClickable = false
 
-        setObservers()
 
+        setObservers()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -128,6 +120,15 @@ class ClienteActivity : AppCompatActivity() {
 
                 return true
             }
+
+            R.id.menuDeletarCliente -> {
+                viewModel.deletar(id)
+                viewModel.getListFromDB()
+                finish()
+
+                return true
+            }
+
             R.id.menuFavoritarCliente -> {
                 //Comandos para favoritar
                 return true

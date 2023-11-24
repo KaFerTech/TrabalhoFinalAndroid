@@ -7,35 +7,38 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.esteticahsof.databinding.ActivityClientesBinding
-import com.example.esteticahsof.view.adapter.ClienteAdapter
-import com.example.esteticahsof.viewmodel.ClienteViewModel
+import com.example.esteticahsof.R
+import com.example.esteticahsof.databinding.ActivityProdutoBinding
+import com.example.esteticahsof.databinding.ActivityProdutosBinding
+import com.example.esteticahsof.view.adapter.ProdutoAdapter
+import com.example.esteticahsof.viewmodel.ProdutoViewModel
 
-class ClientesActivity : AppCompatActivity() {
+class ProdutosActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityClientesBinding
-    private lateinit var adapter: ClienteAdapter
-    private lateinit var viewModel: ClienteViewModel
+    private lateinit var binding: ActivityProdutosBinding
+    private lateinit var adapter: ProdutoAdapter
+    private lateinit var viewModel: ProdutoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityClientesBinding.inflate(layoutInflater)
+        binding = ActivityProdutosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = "Clientes"
+            title = "Produtos"
         }
 
-        adapter = ClienteAdapter(this)
-        viewModel = ViewModelProvider(this).get(ClienteViewModel::class.java)
+        adapter = ProdutoAdapter(this)
+        viewModel = ViewModelProvider(this).get(ProdutoViewModel::class.java)
 
         setAdapter()
         setObservers()
 
-        binding.btnNovoCliente.setOnClickListener{
-            startActivity(Intent(this, CadastroClienteActivity::class.java))
+        binding.btnNovoProduto.setOnClickListener {
+            startActivity(Intent(this, ProdutoActivity::class.java))
         }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -60,12 +63,12 @@ class ClientesActivity : AppCompatActivity() {
 
     fun setAdapter() {
 
-        binding.rcvClientes.layoutManager = LinearLayoutManager(this)
-        binding.rcvClientes.adapter = adapter
+        binding.rcvProdutos.layoutManager = LinearLayoutManager(this)
+        binding.rcvProdutos.adapter = adapter
 
         adapter.onItemClick = {
             val h = adapter.listaAdapter[it]
-            val intent = Intent(this, ClienteActivity::class.java)
+            val intent = Intent(this, ProdutoActivity::class.java)
             intent.putExtra("id", h.id)
             startActivity(intent)
         }

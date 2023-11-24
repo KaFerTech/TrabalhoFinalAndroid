@@ -9,7 +9,7 @@ import java.util.Currency
 @Entity(tableName = "servicos")
 data class Servico (
     @ColumnInfo @PrimaryKey(autoGenerate = true) var id: Int,
-    @ColumnInfo(name = "descricao_servico") var descricaoServico: String,
-    @ColumnInfo(name = "preco") var preco: Currency,
-    @ColumnInfo(name = "duracao") var duracao: Time,
+    @ColumnInfo(name = "nome_servico") var nomeServico: String,
+    @ColumnInfo(name = "preco") var preco: Float,
+    @ColumnInfo(name = "duracao") var duracao: Int
 )

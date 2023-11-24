@@ -5,13 +5,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Cliente
-import com.example.esteticahsof.model.ValidarCliente
+import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.ClienteRepository
 
 class CadastroClienteViewModel(application: Application): AndroidViewModel(application) {
 
     private var repository = ClienteRepository(application.applicationContext)
-    private var validacao = ValidarCliente()
+    private var validacao = ValidarClasses()
     private var txtToast = MutableLiveData<String>()
 
     fun getTxtToast() : LiveData<String> {
@@ -22,7 +22,7 @@ class CadastroClienteViewModel(application: Application): AndroidViewModel(appli
                dtNascimento: String, genero: Int, endereco: String, alergias: String,
                observacoes: String): Boolean{
 
-        if (validacao.camposEmBranco(nomeCliente, telefone)) {
+        if (validacao.camposEmBrancoCliente(nomeCliente, telefone)) {
             txtToast.value = "Preencha Pelomenos Nome e CPF"
             return false
         }

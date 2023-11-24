@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/horaAgendamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="09:15"
+            android:textSize="28dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/horaAgendamento"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/clienteAgendamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jose da Silva" />
+
+            <TextView
+                android:id="@+id/servicoAgendamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Micropigmentação" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/precoAgendamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="150,00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/observacaoAgendamento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Observação"
+        />
+
+</LinearLayout>

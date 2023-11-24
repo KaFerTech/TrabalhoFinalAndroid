@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".view.ServicoActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        android:layout_marginVertical="40dp"
+        android:hint="Nome do Serviço"
+        >
+
+        <EditText
+            android:id="@+id/edtNomeServico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            android:enabled="false"
+            android:text="" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        android:layout_gravity="center"
+        android:hint="Preço R$">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPreco"
+            android:layout_width="200dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text=""
+            android:enabled="false"
+            android:digits="0123456789,."
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        >
+
+        <ImageButton
+            android:id="@+id/btnMenos"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/arrow_down_float"
+            android:enabled="false"
+            android:scaleType="fitCenter"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            android:layout_gravity="center"
+            android:layout_marginVertical="5dp"
+            android:hint="Duranção (Minutos)">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDuracao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:enabled="false"
+                android:gravity="center"
+                android:text=""
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnMais"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@android:drawable/arrow_up_float"
+            android:enabled="false"
+            android:scaleType="fitCenter"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Serviços do produto: "
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        />
+
+    <Button
+        android:id="@+id/btnAdicionarProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center"
+        android:text="Add Produtos" />
+
+</LinearLayout>

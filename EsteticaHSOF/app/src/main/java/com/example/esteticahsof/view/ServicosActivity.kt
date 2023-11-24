@@ -7,35 +7,37 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.esteticahsof.databinding.ActivityClientesBinding
-import com.example.esteticahsof.view.adapter.ClienteAdapter
-import com.example.esteticahsof.viewmodel.ClienteViewModel
+import com.example.esteticahsof.R
+import com.example.esteticahsof.databinding.ActivityServicosBinding
+import com.example.esteticahsof.view.adapter.ServicoAdapter
+import com.example.esteticahsof.viewmodel.ServicoViewModel
 
-class ClientesActivity : AppCompatActivity() {
+class ServicosActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityClientesBinding
-    private lateinit var adapter: ClienteAdapter
-    private lateinit var viewModel: ClienteViewModel
+    private lateinit var binding: ActivityServicosBinding
+    private lateinit var adapter: ServicoAdapter
+    private lateinit var viewModel: ServicoViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityClientesBinding.inflate(layoutInflater)
+        binding = ActivityServicosBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = "Clientes"
+            title = "Serviços"
         }
 
-        adapter = ClienteAdapter(this)
-        viewModel = ViewModelProvider(this).get(ClienteViewModel::class.java)
+        adapter = ServicoAdapter(this)
+        viewModel = ViewModelProvider(this).get(ServicoViewModel::class.java)
 
         setAdapter()
         setObservers()
 
-        binding.btnNovoCliente.setOnClickListener{
-            startActivity(Intent(this, CadastroClienteActivity::class.java))
+        binding.btnNovoServico.setOnClickListener {
+            startActivity(Intent(this, ServicoActivity::class.java))
         }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -60,12 +62,12 @@ class ClientesActivity : AppCompatActivity() {
 
     fun setAdapter() {
 
-        binding.rcvClientes.layoutManager = LinearLayoutManager(this)
-        binding.rcvClientes.adapter = adapter
+        binding.rcvServicos.layoutManager = LinearLayoutManager(this)
+        binding.rcvServicos.adapter = adapter
 
         adapter.onItemClick = {
             val h = adapter.listaAdapter[it]
-            val intent = Intent(this, ClienteActivity::class.java)
+            val intent = Intent(this, ServicoActivity::class.java)
             intent.putExtra("id", h.id)
             startActivity(intent)
         }

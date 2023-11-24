@@ -3,12 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/cadastroClientes"
-        android:title="Cadastro de Clientes"
+        android:id="@+id/agendarCliente"
+        android:title="Agendar Cliente"
+        app:showAsAction="always"
         />
 
     <item
-        android:id="@+id/cadastroServicosProdutos"
-        android:title="Cadastro de Serviços/Produtos"/>
+        android:id="@+id/cadastroClientes"
+        android:title="Cadastro de Clientes"
+        app:showAsAction="collapseActionView"
+        />
+
+    <item
+        android:id="@+id/cadastroProdutos"
+        android:title="Cadastro de Produtos"
+        app:showAsAction="collapseActionView"
+        />
+
+    <item
+        android:id="@+id/cadastroServicos"
+        android:title="Cadastro de Serviços"
+        app:showAsAction="collapseActionView"
+        />
+
+<item
+    android:id="@+id/encerrarAplicacao"
+    android:title="Encerrar Aplicação"
+    app:showAsAction="collapseActionView"
+    />
+
+
 
 </menu>
