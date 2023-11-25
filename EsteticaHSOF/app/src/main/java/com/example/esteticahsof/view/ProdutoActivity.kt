@@ -32,7 +32,7 @@ class ProdutoActivity : AppCompatActivity() {
         supportActionBar?.apply { setDisplayHomeAsUpEnabled(true) }
 
         if (id > 0) {
-            supportActionBar?.apply { title = "Editar Produto" }
+            supportActionBar?.apply { title = "Produto" }
             viewModel.findProduto(id)
             binding.btnMenos.isEnabled = false
             binding.btnMais.isEnabled = false

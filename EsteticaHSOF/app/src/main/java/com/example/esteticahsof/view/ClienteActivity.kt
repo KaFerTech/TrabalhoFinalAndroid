@@ -38,8 +38,8 @@ class ClienteActivity : AppCompatActivity() {
 
 
         val spinnerGenero = binding.spinnerGenero
-        val genderOptions = resources.getStringArray(R.array.gender_options)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genderOptions)
+        val arrayGenero = resources.getStringArray(R.array.array_genero)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayGenero)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerGenero.adapter = adapter
         spinnerGenero.isEnabled = false

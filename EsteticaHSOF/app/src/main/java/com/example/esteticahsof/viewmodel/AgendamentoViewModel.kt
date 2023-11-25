@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Agendamento
 import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.AgendamentoRepository
+import java.sql.Time
 import java.util.Date
 
 class AgendamentoViewModel(application: Application) : AndroidViewModel(application) {
@@ -17,13 +18,13 @@ class AgendamentoViewModel(application: Application) : AndroidViewModel(applicat
     private var agendamentoFromDB = MutableLiveData<Agendamento>()
     private var listViewModel = MutableLiveData<List<Agendamento>>()
 
-    fun salvar(idCliente: Int, idServico: Int, dataHora: Date, observacao: String) : Boolean {
-        if(validacao.camposEmBrancoAgendamento(idCliente, idServico, dataHora)) {
+    fun salvar(cliente: String, servico: String, data: String, hora: String, preco: Float, observacao: String) : Boolean {
+        if(validacao.camposEmBrancoAgendamento(cliente, servico, data, hora)) {
             txtToast.value = "Preencher Cliente, Serviço e Data!"
             return false
         }
 
-        var agendamento = Agendamento(0, idCliente, idServico, dataHora, observacao)
+        var agendamento = Agendamento(0, cliente, servico, data, hora, preco, observacao)
 
         if (!repository.salvar(agendamento)) {
             txtToast.value = "Erro ao salvar..."
@@ -63,8 +64,8 @@ class AgendamentoViewModel(application: Application) : AndroidViewModel(applicat
         agendamentoFromDB.value = repository.getAgendamento(id)
     }
 
-    fun validarAntesDeAtualizar(idCliente: Int, idServico: Int, dataHora: Date): Boolean {
-        if(validacao.camposEmBrancoAgendamento(idCliente, idServico, dataHora)) {
+    fun validarAntesDeAtualizar(cliente: String, servico: String, data: String, hora: String): Boolean {
+        if(validacao.camposEmBrancoAgendamento(cliente, servico, data, hora)) {
             txtToast.value = "Selecionar Cliente, Serviço, Data e Hora!"
             return false
         }

@@ -1,6 +1,8 @@
-package com.example.esteticahsof.repository
+package com.example.esteticahsof.utils
 
 import androidx.room.TypeConverter
+import java.sql.Time
+import java.text.SimpleDateFormat
 import java.util.Date
 
 class DateConverter {

@@ -13,46 +13,89 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:enabled="false"
-        app:helperText="Cliente"
-        >
-
-        <Spinner
-            android:id="@+id/clienteAgendamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
-        app:helperText="Serviço"
-        >
-
-        <Spinner
-            android:id="@+id/servicoAgendamento"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
-        android:hint="Data e Hora"
+        android:hint="Cliente"
         >
 
         <EditText
-            android:id="@+id/dataHoraAgendamento"
+            android:id="@+id/edtClienteAgendamento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="datetime"
+            android:enabled="false"
+            android:focusable="false"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:hint="Serviço"
+        >
+
+        <EditText
+            android:id="@+id/edtServicoAgendamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:focusable="false"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:focusable="false"
+        android:hint="Preço"
+        >
+
+        <EditText
+            android:id="@+id/edtPrecoAgendamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:focusable="false"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:hint="Data"
+        >
+
+        <EditText
+            android:id="@+id/dataAgendamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:enabled="false"
+            android:focusable="false"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Hora"
+        >
+
+        <EditText
+            android:id="@+id/horaAgendamento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:enabled="false"
+            android:focusable="false"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -70,6 +113,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
+            android:lines="2"
+            android:text=" "
             />
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -3,10 +3,12 @@ package com.example.esteticahsof.view.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esteticahsof.R
 import com.example.esteticahsof.model.Agendamento
 import com.example.esteticahsof.view.viewholder.AgendamentoViewHolder
+import com.example.esteticahsof.viewmodel.ClienteViewModel
 
 class AgendamentoAdapter(var context: Context): RecyclerView.Adapter<AgendamentoViewHolder>() {
 
@@ -23,8 +25,11 @@ class AgendamentoAdapter(var context: Context): RecyclerView.Adapter<Agendamento
         val agendamento = listaAdapter[position]
         val txtHolder = agendamento
 
-        holder.clienteAgendamento.text = txtHolder.idCliente.toString()
-
+        holder.clienteAgendamento.text = txtHolder.cliente
+        holder.servicoAgendamento.text = txtHolder.servico
+        holder.horaAgendamento.text = txtHolder.hora
+        holder.precoAgendamento.text = txtHolder.preco.toString()
+        holder.observacaoAgendamento.text = txtHolder.observacao
 
 
         holder.itemView.setOnClickListener {

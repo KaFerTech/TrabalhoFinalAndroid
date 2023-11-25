@@ -12,6 +12,7 @@ import com.example.esteticahsof.databinding.ActivityCadastroClienteBinding
 import com.example.esteticahsof.model.Cliente
 import com.example.esteticahsof.utils.FormataCpf
 import com.example.esteticahsof.utils.FormataData
+import com.example.esteticahsof.utils.FormataTelefone
 import com.example.esteticahsof.viewmodel.CadastroClienteViewModel
 
 class CadastroClienteActivity : AppCompatActivity() {
@@ -32,7 +33,7 @@ class CadastroClienteActivity : AppCompatActivity() {
         }
 
         val spinnerGenero = binding.spinnerGenero
-        val genderOptions = resources.getStringArray(R.array.gender_options)
+        val genderOptions = resources.getStringArray(R.array.array_genero)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genderOptions)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerGenero.adapter = adapter
@@ -44,6 +45,11 @@ class CadastroClienteActivity : AppCompatActivity() {
         // Mascara da Data de Nascimento
         val dtNascimento = binding.edtDtNascimento
         dtNascimento.addTextChangedListener(FormataData(dtNascimento))
+
+        // Mascara do Telefone
+        val tel = binding.edtTelefone
+        tel.addTextChangedListener(FormataTelefone(tel))
+
 
         setObservers()
     }

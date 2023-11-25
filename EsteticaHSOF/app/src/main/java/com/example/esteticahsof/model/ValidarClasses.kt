@@ -1,5 +1,6 @@
 package com.example.esteticahsof.model
 
+import java.sql.Time
 import java.util.Date
 
 class ValidarClasses {
@@ -13,8 +14,7 @@ class ValidarClasses {
         return descricaoServico.isEmpty()
     }
 
-    fun camposEmBrancoAgendamento(idCliente: Int, idServico: Int, dataHora: Date) : Boolean{
-        return idCliente < 1 || idServico < 1 || dataHora == null
-//                || dataHora.before(Date())
+    fun camposEmBrancoAgendamento(cliente: String, servico: String, data: String, hora: String) : Boolean{
+        return cliente.isEmpty() || servico.isEmpty() || data.isEmpty() || hora.isEmpty()
     }
 }

@@ -43,13 +43,10 @@ class MainActivity : AppCompatActivity() {
         setAdapter()
         setObservers()
 
-
-        val txtTituloMain: TextView = binding.txtTituloMain
         val edtData: EditText = binding.edtData
-
         preencherDataAtual(edtData)
 
-        // Configurar um ouvinte de clique para o EditText
+
         edtData.setOnClickListener {
             exibirCalendario()
         }
@@ -64,7 +61,6 @@ class MainActivity : AppCompatActivity() {
             R.id.agendarCliente -> startActivity(Intent(this, AgendamentoActivity::class.java))
             R.id.encerrarAplicacao -> finish()
         }
-
         return super.onOptionsItemSelected(item)
     }
 

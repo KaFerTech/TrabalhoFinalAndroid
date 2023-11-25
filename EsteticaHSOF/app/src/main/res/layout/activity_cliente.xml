@@ -135,6 +135,7 @@
                     android:textSize="16sp"
                     android:text="(00) 0 0000-0000"
                     android:enabled="false"
+                    android:maxLength="16"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 

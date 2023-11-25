@@ -3,13 +3,14 @@ package com.example.esteticahsof.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.Date
 
 @Entity(tableName = "agendamentos")
 data class Agendamento(
     @ColumnInfo @PrimaryKey(autoGenerate = true) var id: Int,
-    @ColumnInfo(name = "id_cliente") var idCliente: Int,
-    @ColumnInfo(name = "id_servico") var idServico: Int,
-    @ColumnInfo(name = "data_hora") var dataHora: Date,
+    @ColumnInfo(name = "cliente") var cliente: String,
+    @ColumnInfo(name = "servico") var servico: String,
+    @ColumnInfo(name = "data") var data: String,
+    @ColumnInfo(name = "hora") var hora: String,
+    @ColumnInfo(name = "preco") var preco: Float,
     @ColumnInfo(name = "observacao") var observacao: String
 )
