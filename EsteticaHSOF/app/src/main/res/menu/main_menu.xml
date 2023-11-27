@@ -26,6 +26,12 @@
         app:showAsAction="collapseActionView"
         />
 
+    <item
+        android:id="@+id/sobre"
+        android:title="Sobre"
+        app:showAsAction="collapseActionView"
+        />
+
 <item
     android:id="@+id/encerrarAplicacao"
     android:title="Encerrar Aplicação"

@@ -11,6 +11,7 @@ class AgendamentoViewHolder(layout: View): RecyclerView.ViewHolder(layout) {
     var clienteAgendamento = layout.findViewById<TextView>(R.id.clienteAgendamento)
     var servicoAgendamento = layout.findViewById<TextView>(R.id.servicoAgendamento)
     var precoAgendamento = layout.findViewById<TextView>(R.id.precoAgendamento)
+    var horaTerminoAgendamento = layout.findViewById<TextView>(R.id.horaTerminoAgendamento)
     var observacaoAgendamento = layout.findViewById<TextView>(R.id.observacaoAgendamento)
 
 }

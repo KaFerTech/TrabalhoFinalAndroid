@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Cliente
-import com.example.esteticahsof.model.Produto
 import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.ClienteRepository
 

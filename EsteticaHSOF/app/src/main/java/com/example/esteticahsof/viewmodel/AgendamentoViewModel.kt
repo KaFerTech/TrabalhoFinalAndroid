@@ -7,8 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Agendamento
 import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.AgendamentoRepository
-import java.sql.Time
-import java.util.Date
 
 class AgendamentoViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -17,14 +15,27 @@ class AgendamentoViewModel(application: Application) : AndroidViewModel(applicat
     private var txtToast = MutableLiveData<String>()
     private var agendamentoFromDB = MutableLiveData<Agendamento>()
     private var listViewModel = MutableLiveData<List<Agendamento>>()
+    private var selectedDate = MutableLiveData<String>()
 
-    fun salvar(cliente: String, servico: String, data: String, hora: String, preco: Float, observacao: String) : Boolean {
+    fun setSelectedDate(date: String) {
+        selectedDate.value = date
+    }
+
+    fun getSelectedDate(): LiveData<String> {
+        return selectedDate
+    }
+
+    fun ordenarPorHora() {
+        listViewModel.value = listViewModel.value?.sortedBy { it.hora }
+    }
+
+    fun salvar(cliente: String, servico: String, preco: Float, duracao: Int, data: String, hora: String, observacao: String) : Boolean {
         if(validacao.camposEmBrancoAgendamento(cliente, servico, data, hora)) {
             txtToast.value = "Preencher Cliente, Serviço e Data!"
             return false
         }
 
-        var agendamento = Agendamento(0, cliente, servico, data, hora, preco, observacao)
+        var agendamento = Agendamento(0, cliente, servico, preco, duracao, data, hora, observacao)
 
         if (!repository.salvar(agendamento)) {
             txtToast.value = "Erro ao salvar..."
@@ -49,7 +60,13 @@ class AgendamentoViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     fun getListFromDB() {
-        listViewModel.value = repository.getAll()
+        val date = selectedDate.value
+        if (!date.isNullOrEmpty()) {
+            listViewModel.value = repository.getAllByDate(date)
+        } else {
+            listViewModel.value = repository.getAll()
+        }
+        ordenarPorHora()
     }
 
     fun getAgendamentoFromDB(): LiveData<Agendamento> {

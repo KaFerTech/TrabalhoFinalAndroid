@@ -24,5 +24,4 @@ interface ServicoDAO {
 
     @Query("SELECT * FROM servicos")
     fun getAll(): List<Servico>
-
 }

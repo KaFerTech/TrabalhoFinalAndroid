@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EsteticaHSOF"
         tools:targetApi="31">
         <activity
+            android:name=".view.SobreActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.AgendamentoActivity"
             android:exported="false" />
         <activity

@@ -4,10 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.esteticahsof.R
 import com.example.esteticahsof.databinding.ActivityServicosBinding
 import com.example.esteticahsof.view.adapter.ServicoAdapter
 import com.example.esteticahsof.viewmodel.ServicoViewModel
@@ -37,6 +37,18 @@ class ServicosActivity : AppCompatActivity() {
         binding.btnNovoServico.setOnClickListener {
             startActivity(Intent(this, ServicoActivity::class.java))
         }
+
+        binding.searchViewServicos.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter(newText.orEmpty())
+                return true
+            }
+        })
 
     }
 

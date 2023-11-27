@@ -11,6 +11,7 @@ import com.example.esteticahsof.view.viewholder.ServicoViewHolder
 class ServicoAdapter(var context: Context): RecyclerView.Adapter<ServicoViewHolder>() {
 
     lateinit var listaAdapter: List<Servico>
+    lateinit var listaOriginal: List<Servico>
     var onItemClick : ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServicoViewHolder {
@@ -35,6 +36,18 @@ class ServicoAdapter(var context: Context): RecyclerView.Adapter<ServicoViewHold
 
     fun updateAdapter(list: List<Servico>) {
         listaAdapter = list
+        listaOriginal = list
+        notifyDataSetChanged()
+    }
+
+    fun filter(query: String) {
+        listaAdapter = if (query.isEmpty()) {
+            listaOriginal
+        } else {
+            listaOriginal.filter { servico ->
+                servico.nomeServico.contains(query, ignoreCase = true)
+            }
+        }
         notifyDataSetChanged()
     }
 

@@ -12,6 +12,19 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     private var repository = AgendamentoRepository(application.applicationContext)
     private var listViewModel = MutableLiveData<List<Agendamento>>()
     private var txtToast = MutableLiveData<String>()
+    private var selectedDate = MutableLiveData<String>()
+
+    fun setSelectedDate(date: String) {
+        selectedDate.value = date
+    }
+
+    fun getSelectedDate(): LiveData<String> {
+        return selectedDate
+    }
+
+    fun ordenarPorHora() {
+        listViewModel.value = listViewModel.value?.sortedBy { it.hora }
+    }
 
     fun getListViewModel() : LiveData<List<Agendamento>> {
         return listViewModel
@@ -22,7 +35,13 @@ class MainViewModel(application: Application): AndroidViewModel(application) {
     }
 
     fun getListFromDB() {
-        listViewModel.value = repository.getAll()
+        val date = selectedDate.value
+        if (!date.isNullOrEmpty()) {
+            listViewModel.value = repository.getAllByDate(date)
+        } else {
+            listViewModel.value = repository.getAll()
+        }
+        ordenarPorHora()
     }
 
     fun deletar(agendamento: Agendamento) {

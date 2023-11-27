@@ -73,12 +73,16 @@ class CadastroClienteActivity : AppCompatActivity() {
                 val alergias = binding.edtAlergias.text.toString()
                 val observacoes = binding.edtObservacoes.text.toString()
 
-                if (viewModelCadastro.salvar(nomeCliente, telefone, email, cpf,
-                        dtNascimento, genero, endereco, alergias, observacoes)) {
+                if (viewModelCadastro.salvar(
+                        nomeCliente, telefone, email, cpf,
+                        dtNascimento, genero, endereco, alergias, observacoes
+                    )
+                ) {
                     finish()
                 }
                 return true
             }
+
             android.R.id.home -> {
                 // Ação ao clicar no botão de voltar, mesmo ficando tachado, só funciona desse jeito
                 onBackPressed()

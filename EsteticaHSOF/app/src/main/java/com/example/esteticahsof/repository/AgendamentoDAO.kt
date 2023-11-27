@@ -23,4 +23,8 @@ interface AgendamentoDAO {
 
     @Query("SELECT * FROM agendamentos")
     fun getAll() : List<Agendamento>
+
+    @Query("SELECT * FROM agendamentos WHERE data = :date")
+    fun getAllByDate(date: String): List<Agendamento>
+
 }

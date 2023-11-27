@@ -26,5 +26,4 @@ class ServicoRepository(context: Context) {
     fun getAll(): List<Servico> {
         return dao.getAll()
     }
-
 }

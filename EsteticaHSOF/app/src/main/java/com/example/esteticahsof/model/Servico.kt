@@ -3,8 +3,6 @@ package com.example.esteticahsof.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Time
-import java.util.Currency
 
 @Entity(tableName = "servicos")
 data class Servico (

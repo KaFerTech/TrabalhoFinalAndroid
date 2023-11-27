@@ -1,34 +1,35 @@
 package com.example.esteticahsof.view
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.example.esteticahsof.R
 import com.example.esteticahsof.databinding.ActivityServicoBinding
 import com.example.esteticahsof.model.Servico
+import com.example.esteticahsof.viewmodel.ProdutoViewModel
 import com.example.esteticahsof.viewmodel.ServicoViewModel
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 
 class ServicoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityServicoBinding
     private lateinit var viewModel: ServicoViewModel
+    private lateinit var viewModelProduto: ProdutoViewModel
     private lateinit var servico: Servico
     var id = 0
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityServicoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(ServicoViewModel::class.java)
+        viewModelProduto = ViewModelProvider(this).get(ProdutoViewModel::class.java)
         id = intent.getIntExtra("id", 0)
         supportActionBar?.apply { setDisplayHomeAsUpEnabled(true) }
 
@@ -37,6 +38,8 @@ class ServicoActivity : AppCompatActivity() {
             viewModel.findServico(id)
             binding.btnMenos.isEnabled = false
             binding.btnMais.isEnabled = false
+            binding.btnMenos.isVisible = false
+            binding.btnMais.isVisible = false
         } else {
             supportActionBar?.apply { title = "Criar Serviço" }
             binding.edtNomeServico.isEnabled = true
@@ -44,6 +47,8 @@ class ServicoActivity : AppCompatActivity() {
             binding.edtDuracao.isEnabled = true
             binding.btnMenos.isEnabled = true
             binding.btnMais.isEnabled = true
+            binding.btnMenos.isVisible = true
+            binding.btnMais.isVisible = true
         }
 
 
@@ -66,11 +71,8 @@ class ServicoActivity : AppCompatActivity() {
 
 
         binding.btnAdicionarProduto.setOnClickListener {
-
+            exibirListaProdutos()
         }
-
-
-
 
         setObservers()
     }
@@ -91,11 +93,10 @@ class ServicoActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                // Ação ao clicar no botão de voltar, mesmo ficando tachado, só funciona desse jeito
                 onBackPressed()
                 return true
             }
-            R.id.deletarProduto -> {
+            R.id.deletarServico -> {
                 if (id > 0) {
                     viewModel.deletar(id)
                     viewModel.getListFromDB()
@@ -114,6 +115,8 @@ class ServicoActivity : AppCompatActivity() {
                     binding.edtDuracao.isEnabled = true
                     binding.btnMenos.isEnabled = true
                     binding.btnMais.isEnabled = true
+                    binding.btnMenos.isVisible = true
+                    binding.btnMais.isVisible = true
                     item.title = "Salvar"
                     item.setIcon(android.R.drawable.ic_menu_save)
                 } else {
@@ -148,13 +151,30 @@ class ServicoActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun exibirListaProdutos() {
+        viewModelProduto.getListFromDB()
+        viewModelProduto.getListViewModel().observe(this) { produtos ->
+
+            val nomeProdutos = produtos.map { it.nomeProduto }.toTypedArray()
+
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Selecione um Produto")
+
+            builder.setItems(nomeProdutos) { dialog, which ->
+                val produtoSelecionado = produtos[which]
+                val valorProdutoSelecionado = produtoSelecionado.preco + binding.edtPreco.text.toString().toFloat()
+                binding.edtPreco.setText(valorProdutoSelecionado.toString())
+
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        }
+    }
 
 
-
-
-
-
-    fun setObservers(){
+    private fun setObservers(){
 
         if (id > 0) {
             viewModel.getServicoFromDB().observe(this) {
@@ -163,11 +183,11 @@ class ServicoActivity : AppCompatActivity() {
                 binding.edtPreco.setText(servico.preco.toString())
                 binding.edtDuracao.setText(servico.duracao.toString())
             }
+
         }
 
         viewModel.getTxtToast().observe(this){
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }
-
 }

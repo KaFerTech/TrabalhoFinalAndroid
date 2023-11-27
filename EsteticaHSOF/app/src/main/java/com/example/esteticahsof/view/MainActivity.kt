@@ -8,13 +8,11 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.esteticahsof.R
 import com.example.esteticahsof.databinding.ActivityMainBinding
-import com.example.esteticahsof.model.Agendamento
 import com.example.esteticahsof.view.adapter.AgendamentoAdapter
 import com.example.esteticahsof.viewmodel.MainViewModel
 import java.text.SimpleDateFormat
@@ -40,12 +38,12 @@ class MainActivity : AppCompatActivity() {
         adapter = AgendamentoAdapter(this)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        setAdapter()
-        setObservers()
-
         val edtData: EditText = binding.edtData
         preencherDataAtual(edtData)
+        viewModel.setSelectedDate(edtData.text.toString())
 
+        setAdapter()
+        setObservers()
 
         edtData.setOnClickListener {
             exibirCalendario()
@@ -59,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             R.id.cadastroProdutos -> startActivity(Intent(this, ProdutosActivity::class.java))
             R.id.cadastroServicos -> startActivity(Intent(this, ServicosActivity::class.java))
             R.id.agendarCliente -> startActivity(Intent(this, AgendamentoActivity::class.java))
+            R.id.sobre -> startActivity(Intent(this, SobreActivity::class.java))
             R.id.encerrarAplicacao -> finish()
         }
         return super.onOptionsItemSelected(item)
@@ -82,6 +81,8 @@ class MainActivity : AppCompatActivity() {
                 // Lógica para tratar a data selecionada
                 val dataSelecionada = "$dayOfMonth/${month + 1}/$year"
                 binding.edtData.setText(dataSelecionada)
+                viewModel.setSelectedDate(dataSelecionada) // Adiciona a lógica para atualizar a data no ViewModel
+                viewModel.getListFromDB()
             },
             ano, mes, dia
         )
@@ -95,7 +96,6 @@ class MainActivity : AppCompatActivity() {
         editText.setText(dataAtual)
     }
 
-
     fun setObservers(){
         viewModel.getListViewModel().observe(this){
             adapter.updateAdapter(it)
@@ -106,7 +106,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setAdapter(){
-
         binding.rcvAgenda.layoutManager = LinearLayoutManager(this)
         binding.rcvAgenda.adapter = adapter
 

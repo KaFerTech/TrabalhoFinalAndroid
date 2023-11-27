@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
 import com.example.esteticahsof.R
 import com.example.esteticahsof.databinding.ActivityAgendamentoBinding
 import com.example.esteticahsof.model.Agendamento
@@ -61,7 +62,6 @@ class AgendamentoActivity : AppCompatActivity() {
         }
 
         binding.horaAgendamento.setOnClickListener {
-//            exibirRelogio()
             exibirListaHorarios()
         }
 
@@ -92,10 +92,10 @@ class AgendamentoActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                // Ação ao clicar no botão de voltar, mesmo ficando tachado, só funciona desse jeito
                 onBackPressed()
                 return true
             }
+
             R.id.deletarAgendamento -> {
                 if (id > 0) {
                     viewModel.deletar(id)
@@ -106,42 +106,59 @@ class AgendamentoActivity : AppCompatActivity() {
                 }
                 return true
             }
+
             R.id.menuEditarAgendamento -> {
-                if(item.title == "Editar") {
+                if (item.title == "Editar") {
                     binding.edtClienteAgendamento.isEnabled = true
                     binding.edtServicoAgendamento.isEnabled = true
                     binding.dataAgendamento.isEnabled = true
+                    binding.horaAgendamento.isEnabled = true
                     binding.observacoesAgendamento.isEnabled = true
                     item.title = "Salvar"
                     item.setIcon(android.R.drawable.ic_menu_save)
                 } else {
                     val clienteAgendamento = binding.edtClienteAgendamento.text.toString()
                     val servicoAgendamento = binding.edtServicoAgendamento.text.toString()
+                    val precoAgendamento = binding.edtPrecoAgendamento.text.toString().toFloat()
+                    val duracaoAgendamento = binding.duracaoAgendamento.text.toString().toInt()
                     val dataAgendamento = binding.dataAgendamento.text.toString()
                     val horaAgendamento = binding.horaAgendamento.text.toString()
-                    val precoAgendamento = binding.edtPrecoAgendamento.text.toString()
                     val observacaoAgendamento = binding.observacoesAgendamento.text.toString()
 
-                        if (id > 0) {
-                            if (viewModel.validarAntesDeAtualizar( clienteAgendamento, servicoAgendamento, dataAgendamento, horaAgendamento)) {
-                                agendamento.cliente = clienteAgendamento
-                                agendamento.servico = servicoAgendamento
-                                agendamento.data = dataAgendamento
-                                agendamento.hora = horaAgendamento
-                                agendamento.preco = precoAgendamento.toFloat()
-                                agendamento.observacao = observacaoAgendamento
+                    if (id > 0) {
+                        if (viewModel.validarAntesDeAtualizar(
+                                clienteAgendamento,
+                                servicoAgendamento,
+                                dataAgendamento,
+                                horaAgendamento
+                            )
+                        ) {
+                            agendamento.cliente = clienteAgendamento
+                            agendamento.servico = servicoAgendamento
+                            agendamento.preco = precoAgendamento
+                            agendamento.duracao = duracaoAgendamento
+                            agendamento.data = dataAgendamento
+                            agendamento.hora = horaAgendamento
+                            agendamento.observacao = observacaoAgendamento
 
-                                viewModel.atualizar(agendamento)
+                            viewModel.atualizar(agendamento)
 
-                                finish()
-                            }
-                        } else {
-                            if (viewModel.salvar(clienteAgendamento, servicoAgendamento, dataAgendamento, horaAgendamento, precoAgendamento.toFloat(), observacaoAgendamento)) {
-                                finish()
-                            }
+                            finish()
                         }
-
-
+                    } else {
+                        if (viewModel.salvar(
+                                clienteAgendamento,
+                                servicoAgendamento,
+                                precoAgendamento,
+                                duracaoAgendamento,
+                                dataAgendamento,
+                                horaAgendamento,
+                                observacaoAgendamento
+                            )
+                        ) {
+                            finish()
+                        }
+                    }
                 }
                 return true
             }
@@ -150,7 +167,6 @@ class AgendamentoActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
     private fun exibirCalendario() {
         val calendario = Calendar.getInstance()
         val ano = calendario.get(Calendar.YEAR)
@@ -158,13 +174,12 @@ class AgendamentoActivity : AppCompatActivity() {
         val dia = calendario.get(Calendar.DAY_OF_MONTH)
 
         val datePicker = DatePickerDialog(
-            this,
-            { _, year, month, dayOfMonth ->
+            this, { _, year, month, dayOfMonth ->
                 // Lógica para tratar a data selecionada
                 val dataSelecionada = "$dayOfMonth/${month + 1}/$year"
                 binding.dataAgendamento.setText(dataSelecionada)
-            },
-            ano, mes, dia
+                binding.horaAgendamento.isEnabled = true
+            }, ano, mes, dia
         )
 
         datePicker.show()
@@ -176,14 +191,12 @@ class AgendamentoActivity : AppCompatActivity() {
         val minuto = calendario.get(Calendar.MINUTE)
 
         val timePicker = TimePickerDialog(
-            this,
-            { _, selectedHour, selectedMinute ->
+            this, { _, selectedHour, selectedMinute ->
                 // Lógica para tratar a hora selecionada
                 val horaSelecionada = "$selectedHour:$selectedMinute"
                 // Adicione a lógica para fazer algo com a hora selecionada
                 binding.horaAgendamento.setText(horaSelecionada)
-            },
-            hora, minuto, true
+            }, hora, minuto, true
         )
 
         timePicker.show()
@@ -194,7 +207,6 @@ class AgendamentoActivity : AppCompatActivity() {
         val dataAtual = formatoData.format(Calendar.getInstance().time)
         editText.setText(dataAtual)
     }
-
 
     private fun exibirListaClientes() {
         viewModelCliente.getListFromDB()
@@ -229,6 +241,7 @@ class AgendamentoActivity : AppCompatActivity() {
                 val servicoSelecionado = servicos[which]
                 binding.edtServicoAgendamento.setText(servicoSelecionado.nomeServico)
                 binding.edtPrecoAgendamento.setText(servicoSelecionado.preco.toString())
+                binding.duracaoAgendamento.setText(servicoSelecionado.duracao.toString())
                 dialog.dismiss()
             }
 
@@ -238,37 +251,91 @@ class AgendamentoActivity : AppCompatActivity() {
     }
 
 
+//    private fun exibirListaHorarios() {
+//        val horarios = resources.getStringArray(R.array.array_hora)
+//
+//        val builder = AlertDialog.Builder(this)
+//        builder.setTitle("Selecione um Horário")
+//
+//        builder.setItems(horarios) { dialog, which ->
+//            val horarioSelecionado = horarios[which]
+//            binding.horaAgendamento.setText(horarioSelecionado)
+//            dialog.dismiss()
+//        }
+//
+//        val dialog = builder.create()
+//        dialog.show()
+//    }
+
     private fun exibirListaHorarios() {
         val horarios = resources.getStringArray(R.array.array_hora)
+        viewModel.setSelectedDate(binding.dataAgendamento.text.toString())
+        viewModel.getListFromDB()
 
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Selecione um Horário")
+        // Se já houver agendamentos, filtre os horários disponíveis
+        if (viewModel.getListViewModel().value?.isNotEmpty() == true) {
+            val horariosAgendados = viewModel.getListViewModel().value?.map { Pair(it.hora, it.duracao) } ?: emptyList()
+            val horariosDisponiveis = horarios.filter { horario ->
+                !horariosAgendados.any { it.first <= horario && calcularHoraTermino(it.first, it.second) > horario }
+            }
 
-        builder.setItems(horarios) { dialog, which ->
-            val horarioSelecionado = horarios[which]
-            binding.horaAgendamento.setText(horarioSelecionado)
-            dialog.dismiss()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Selecione um Horário")
+
+            builder.setItems(horariosDisponiveis.toTypedArray()) { dialog, which ->
+                val horarioSelecionado = horariosDisponiveis[which]
+                binding.horaAgendamento.setText(horarioSelecionado)
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        } else {
+            // Caso não haja agendamentos, exiba todos os horários
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Selecione um Horário")
+
+            builder.setItems(horarios) { dialog, which ->
+                val horarioSelecionado = horarios[which]
+                binding.horaAgendamento.setText(horarioSelecionado)
+                dialog.dismiss()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
         }
-
-        val dialog = builder.create()
-        dialog.show()
     }
 
+    private fun calcularHoraTermino(horaInicial: String, duracao: Int): String {
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
 
-    private fun setObservers(){
+        // Converter a hora inicial para um objeto Date
+        val dataHoraInicial = sdf.parse(horaInicial)
+
+        // Adicionar a duração em minutos à data e hora inicial
+        val calendar = Calendar.getInstance()
+        calendar.time = dataHoraInicial
+        calendar.add(Calendar.MINUTE, duracao)
+
+        // Formatar a nova hora
+        return sdf.format(calendar.time)
+    }
+
+    private fun setObservers() {
         if (id > 0) {
             viewModel.getAgendamentoFromDB().observe(this) {
                 agendamento = it
                 binding.edtClienteAgendamento.setText(agendamento.cliente)
                 binding.edtServicoAgendamento.setText(agendamento.servico)
+                binding.edtPrecoAgendamento.setText(agendamento.preco.toString())
+                binding.duracaoAgendamento.setText(agendamento.duracao.toString())
                 binding.dataAgendamento.setText(agendamento.data)
                 binding.horaAgendamento.setText(agendamento.hora)
-                binding.edtPrecoAgendamento.setText(agendamento.preco.toString())
                 binding.observacoesAgendamento.setText(agendamento.observacao)
             }
         }
 
-        viewModel.getTxtToast().observe(this){
+        viewModel.getTxtToast().observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }

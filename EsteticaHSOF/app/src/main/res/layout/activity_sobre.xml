@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SobreActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:srcCompat="@drawable/sobre" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Trabalho Final da Disciplina de
+        \nDESENVOLVIMENTO DE APLICATIVOS MÓVEIS
+        \nProfessor: Jason Antonio Pedroso Sobreiro
+        \nApp: EsteticaHSOF | versão 1.0
+        \nEste aplicativo foi desenvolvido para simplificar e otimizar o processo de agendamento de clientes em uma clínica de estética.
+        \nO aplicativo foi desenvolvido usando a IDE Android Studio Giraffe | 2022.3.1 Patch 4 Build #AI-223.8836.35.2231.11090377
+        \n\nAutor: Kaique Fernandes
+        \nContato: kaique.fnds@hotmail.com
+        \n®[2023] KaFerTech Soluções. Todos os direitos reservados.
+
+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

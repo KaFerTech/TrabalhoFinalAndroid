@@ -11,6 +11,7 @@ import com.example.esteticahsof.view.viewholder.ProdutoViewHolder
 class ProdutoAdapter(var context: Context): RecyclerView.Adapter<ProdutoViewHolder>() {
 
     lateinit var listaAdapter: List<Produto>
+    lateinit var listaOriginal: List<Produto>
     var onItemClick : ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutoViewHolder {
@@ -35,6 +36,19 @@ class ProdutoAdapter(var context: Context): RecyclerView.Adapter<ProdutoViewHold
 
     fun updateAdapter(list: List<Produto>){
         listaAdapter = list
+        listaOriginal = list
         notifyDataSetChanged()
     }
+
+    fun filter(query: String) {
+        listaAdapter = if (query.isEmpty()) {
+            listaOriginal
+        } else {
+            listaOriginal.filter { produto ->
+                produto.nomeProduto.contains(query, ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
+    }
+
 }

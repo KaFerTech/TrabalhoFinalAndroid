@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.esteticahsof.databinding.ActivityClientesBinding
 import com.example.esteticahsof.view.adapter.ClienteAdapter
 import com.example.esteticahsof.viewmodel.ClienteViewModel
+import android.widget.SearchView.OnQueryTextListener
 
 class ClientesActivity : AppCompatActivity() {
 
@@ -36,7 +37,24 @@ class ClientesActivity : AppCompatActivity() {
         binding.btnNovoCliente.setOnClickListener{
             startActivity(Intent(this, CadastroClienteActivity::class.java))
         }
+
+        binding.searchViewClientes.setOnQueryTextListener(object : OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter(newText.orEmpty())
+                return true
+            }
+        })
+
+
     }
+
+
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

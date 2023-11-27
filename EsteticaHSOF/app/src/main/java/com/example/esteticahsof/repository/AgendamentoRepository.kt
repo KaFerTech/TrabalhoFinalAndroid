@@ -27,4 +27,8 @@ class AgendamentoRepository(context: Context) {
         return dao.getAll()
     }
 
+    fun getAllByDate(date: String): List<Agendamento> {
+        return dao.getAllByDate(date)
+    }
+
 }

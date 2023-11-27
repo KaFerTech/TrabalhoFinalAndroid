@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Servico
 import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.ServicoRepository
-import java.sql.Time
 
 class ServicoViewModel(application: Application): AndroidViewModel(application) {
 
@@ -77,5 +76,4 @@ class ServicoViewModel(application: Application): AndroidViewModel(application) 
         repository.atualizar(servico)
         txtToast.value = "Serviço Atualizado!"
     }
-
 }

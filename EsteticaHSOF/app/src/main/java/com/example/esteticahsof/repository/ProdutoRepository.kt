@@ -26,5 +26,4 @@ class ProdutoRepository(context: Context) {
     fun getAll(): List<Produto> {
         return dao.getAll()
     }
-
 }

@@ -3,12 +3,13 @@ package com.example.esteticahsof.view.adapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.esteticahsof.R
 import com.example.esteticahsof.model.Agendamento
 import com.example.esteticahsof.view.viewholder.AgendamentoViewHolder
-import com.example.esteticahsof.viewmodel.ClienteViewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class AgendamentoAdapter(var context: Context): RecyclerView.Adapter<AgendamentoViewHolder>() {
 
@@ -23,14 +24,14 @@ class AgendamentoAdapter(var context: Context): RecyclerView.Adapter<Agendamento
 
     override fun onBindViewHolder(holder: AgendamentoViewHolder, position: Int) {
         val agendamento = listaAdapter[position]
-        val txtHolder = agendamento
 
-        holder.clienteAgendamento.text = txtHolder.cliente
-        holder.servicoAgendamento.text = txtHolder.servico
-        holder.horaAgendamento.text = txtHolder.hora
-        holder.precoAgendamento.text = txtHolder.preco.toString()
-        holder.observacaoAgendamento.text = txtHolder.observacao
-
+        holder.clienteAgendamento.text = agendamento.cliente
+        holder.servicoAgendamento.text = agendamento.servico
+        holder.precoAgendamento.text = agendamento.preco.toString()
+        holder.horaAgendamento.text = agendamento.hora
+        val horaTermino = calcularHoraTermino(agendamento.hora, agendamento.duracao)
+        holder.horaTerminoAgendamento.text = horaTermino
+        holder.observacaoAgendamento.text = agendamento.observacao
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(position)
@@ -43,6 +44,23 @@ class AgendamentoAdapter(var context: Context): RecyclerView.Adapter<Agendamento
 
     fun updateAdapter(list: List<Agendamento>){
         listaAdapter = list
+        listaAdapter = list.sortedBy { it.hora }
         notifyDataSetChanged()
     }
+
+    private fun calcularHoraTermino(horaInicial: String, duracao: Int): String {
+        val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+
+        // Converter a hora inicial para um objeto Date
+        val dataHoraInicial = sdf.parse(horaInicial)
+
+        // Adicionar a duração em minutos à data e hora inicial
+        val calendar = Calendar.getInstance()
+        calendar.time = dataHoraInicial
+        calendar.add(Calendar.MINUTE, duracao)
+
+        // Formatar a nova hora
+        return sdf.format(calendar.time)
+    }
+
 }

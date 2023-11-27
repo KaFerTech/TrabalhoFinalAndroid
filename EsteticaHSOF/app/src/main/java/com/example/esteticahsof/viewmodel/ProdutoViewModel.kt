@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData
 import com.example.esteticahsof.model.Produto
 import com.example.esteticahsof.model.ValidarClasses
 import com.example.esteticahsof.repository.ProdutoRepository
-import java.util.Currency
 
 class ProdutoViewModel(application: Application) : AndroidViewModel(application) {
 
