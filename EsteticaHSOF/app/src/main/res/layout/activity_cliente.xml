@@ -26,13 +26,16 @@
         android:textSize="26sp"
         android:layout_marginVertical="20dp"
         android:enabled="false"
-        android:text="Nome Cliente" />
+        android:text="Nome Cliente"
+        android:fontFamily="casual"
+        />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+        android:background="?android:attr/listDivider"
+        />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -58,7 +61,9 @@
             android:gravity="center"
             android:text="Ligar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLigar" />
+            app:layout_constraintTop_toBottomOf="@+id/btnLigar"
+            android:fontFamily="casual"
+            />
 
         <ImageButton
             android:id="@+id/btnAgendar"
@@ -78,7 +83,9 @@
             android:gravity="center"
             android:text="Agendar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAgendar" />
+            app:layout_constraintTop_toBottomOf="@+id/btnAgendar"
+            android:fontFamily="casual"
+            />
 
         <ImageButton
             android:id="@+id/btnTexto"
@@ -87,7 +94,8 @@
             app:layout_constraintEnd_toStartOf="@+id/btnAgendar"
             app:layout_constraintStart_toEndOf="@+id/btnLigar"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/stat_notify_chat" />
+            app:srcCompat="@android:drawable/stat_notify_chat"
+            />
 
         <TextView
             android:id="@+id/txtTexto"
@@ -98,7 +106,9 @@
             android:text="Texto"
             app:layout_constraintEnd_toStartOf="@+id/txtAgendar"
             app:layout_constraintStart_toEndOf="@+id/txtLigar"
-            app:layout_constraintTop_toBottomOf="@+id/btnTexto" />
+            app:layout_constraintTop_toBottomOf="@+id/btnTexto"
+            android:fontFamily="casual"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -117,7 +127,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Dados do Cliente" />
+                android:text="Dados do Cliente"
+                android:fontFamily="casual"
+                />
 
 
 
@@ -126,7 +138,9 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
-                android:hint="Telefone">
+                android:hint="Telefone"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtTelefone"
@@ -136,6 +150,7 @@
                     android:text="(00) 0 0000-0000"
                     android:enabled="false"
                     android:maxLength="16"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,7 +160,9 @@
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
                 android:enabled="false"
-                android:hint="E-mail">
+                android:hint="E-mail"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmail"
@@ -153,6 +170,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:text="email@mail.com"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -162,7 +180,9 @@
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
                 android:enabled="false"
-                android:hint="CPF">
+                android:hint="CPF"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtCpf"
@@ -170,6 +190,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:text="000.000.000-00"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,7 +199,9 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
-                android:hint="Data de Nascimento">
+                android:hint="Data de Nascimento"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtDtNascimento"
@@ -187,6 +210,7 @@
                     android:textSize="16sp"
                     android:enabled="false"
                     android:text="00/00/0000"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -200,8 +224,8 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="Gênero"
-
                     android:textSize="18sp"
+                    android:fontFamily="casual"
                     />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -210,14 +234,18 @@
                     app:boxBackgroundMode="outline"
                     android:layout_marginVertical="7dp"
                     android:hint="Gênero"
+                    android:fontFamily="casual"
                     >
 
                     <Spinner
                         android:id="@+id/spinnerGenero"
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
+                        android:fontFamily="casual"
                         />
+
                 </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -225,7 +253,9 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
-                android:hint="Endereço">
+                android:hint="Endereço"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEndereco"
@@ -235,6 +265,7 @@
                     android:lines="2"
                     android:text="..."
                     android:enabled="false"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -243,7 +274,9 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
-                android:hint="Alergias">
+                android:hint="Alergias"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtAlergias"
@@ -253,6 +286,7 @@
                     android:lines="2"
                     android:text="..."
                     android:enabled="false"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -261,7 +295,9 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="outline"
                 android:layout_marginVertical="5dp"
-                android:hint="Observações">
+                android:hint="Observações"
+                android:fontFamily="casual"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtObservacoes"
@@ -271,6 +307,7 @@
                     android:lines="2"
                     android:text="..."
                     android:enabled="false"
+                    android:fontFamily="casual"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 

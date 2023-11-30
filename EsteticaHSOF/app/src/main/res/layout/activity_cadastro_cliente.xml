@@ -13,13 +13,18 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="Nome">
+        android:hint="Nome"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtNomeCliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -27,13 +32,18 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="Número de Telefone">
+        android:hint="Número de Telefone"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtTelefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -41,13 +51,18 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="E-mail">
+        android:hint="E-mail"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,14 +70,19 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="CPF">
+        android:hint="CPF"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="14" />
+            android:maxLength="14"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -70,13 +90,18 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="Data de Nascimento">
+        android:hint="Data de Nascimento"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtDtNascimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date" />
+            android:inputType="date"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
 <!--    <com.google.android.material.textfield.TextInputLayout-->
@@ -104,6 +129,7 @@
             android:gravity="center"
             android:text="Gênero"
             android:textSize="18sp"
+            android:fontFamily="casual"
             />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -111,13 +137,19 @@
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
             android:layout_marginVertical="7dp"
-            android:hint="Gênero">
+            android:hint="Gênero"
+            android:fontFamily="casual"
+            >
 
             <Spinner
                 android:id="@+id/spinnerGenero"
                 android:layout_width="match_parent"
-                android:layout_height="43dp" />
+                android:layout_height="43dp"
+                android:fontFamily="casual"
+                />
+
         </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
 
@@ -126,7 +158,9 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="7dp"
         android:hint="Endereço"
-        app:boxBackgroundMode="outline">
+        app:boxBackgroundMode="outline"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtEndereco"
@@ -134,6 +168,7 @@
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
             android:lines="2"
+            android:fontFamily="casual"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,14 +177,19 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="Alergias">
+        android:hint="Alergias"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtAlergias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:lines="2"/>
+            android:lines="2"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -157,14 +197,19 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="7dp"
-        android:hint="Observações">
+        android:hint="Observações"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtObservacoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
-            android:lines="2"/>
+            android:lines="2"
+            android:fontFamily="casual"
+            />
+
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

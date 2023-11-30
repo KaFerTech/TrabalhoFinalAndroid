@@ -19,6 +19,7 @@
             android:textSize="18sp"
             android:gravity="center"
             android:text="Clientes agendados do dia: "
+            android:fontFamily="casual"
             />
 
         <EditText
@@ -31,7 +32,9 @@
             android:textSize="18sp"
             android:focusable="false"
             android:background="@android:color/transparent"
-            android:inputType="date" />
+            android:inputType="date"
+            android:fontFamily="casual"
+            />
 
     </LinearLayout>
 
@@ -40,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
+        android:fontFamily="casual"
         />
 
 </LinearLayout>

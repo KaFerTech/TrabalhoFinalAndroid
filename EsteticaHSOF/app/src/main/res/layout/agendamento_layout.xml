@@ -22,7 +22,9 @@
             android:text="09:15"
             android:textSize="21sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"
+            />
 
         <TextView
             android:id="@+id/horaTerminoAgendamento"
@@ -32,7 +34,9 @@
             android:text="10:15"
             android:textSize="21sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horaAgendamento" />
+            app:layout_constraintTop_toBottomOf="@+id/horaAgendamento"
+            android:fontFamily="casual"
+            />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -49,19 +53,24 @@
                 android:layout_height="wrap_content"
                 android:text="Jose da Silva"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                />
 
             <TextView
                 android:id="@+id/servicoAgendamento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Micropigmentação" />
+                android:text="Micropigmentação"
+                android:fontFamily="casual"
+                />
 
             <TextView
                 android:id="@+id/observacaoAgendamento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Observação"
+                android:fontFamily="casual"
                 />
 
 
@@ -81,7 +90,9 @@
                 android:textSize="14sp"
                 android:layout_gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="casual"
+                />
 
             <TextView
                 android:id="@+id/precoAgendamento"
@@ -90,12 +101,11 @@
                 android:textSize="16sp"
                 android:text="150,00"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="casual"
+                />
 
         </LinearLayout>
-
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

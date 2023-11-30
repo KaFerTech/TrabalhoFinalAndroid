@@ -14,6 +14,7 @@
         app:boxBackgroundMode="outline"
         android:layout_marginVertical="40dp"
         android:hint="Nome do Produto"
+        android:fontFamily="casual"
         >
 
         <EditText
@@ -24,7 +25,9 @@
             android:textStyle="bold"
             android:textSize="26sp"
             android:enabled="false"
-            android:text="" />
+            android:text=""
+            android:fontFamily="casual"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -33,7 +36,9 @@
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
         android:layout_gravity="center"
-        android:hint="Preço R$">
+        android:hint="Preço R$"
+        android:fontFamily="casual"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtPreco"
@@ -45,6 +50,7 @@
             android:text=""
             android:enabled="false"
             android:digits="0123456789,."
+            android:fontFamily="casual"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +76,9 @@
             android:layout_height="wrap_content"
             app:boxBackgroundMode="outline"
             android:layout_gravity="center"
-            android:hint="Qtd Estoque">
+            android:hint="Qtd Estoque"
+            android:fontFamily="casual"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtQtdEstoque"
@@ -81,7 +89,10 @@
                 android:gravity="center"
                 android:text=""
                 android:digits="0123456789,."
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:fontFamily="casual"
+                />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton

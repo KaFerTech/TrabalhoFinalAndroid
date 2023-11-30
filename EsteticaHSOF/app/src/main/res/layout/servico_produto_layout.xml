@@ -19,7 +19,9 @@
             android:text="Nome do Produto"
             android:padding="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"
+            />
 
         <TextView
             android:id="@+id/txtPrecoProduto"
@@ -29,7 +31,9 @@
             android:padding="5dp"
             app:layout_constraintEnd_toStartOf="@+id/txtQtdProduto"
             app:layout_constraintStart_toEndOf="@+id/txtNomeProduto"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"
+            />
 
         <TextView
             android:id="@+id/txtQtdProduto"
@@ -38,10 +42,10 @@
             android:text="Qtd do Produto"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="casual"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </LinearLayout>
